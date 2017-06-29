@@ -2,6 +2,7 @@
 
 use Nmax\SdkFinance\SdkFinance;
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class SdkFinanceServiceProvider extends ServiceProvider {
 
@@ -19,25 +20,14 @@ class SdkFinanceServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(SdkFinance::class, function ($app) {
-            return new SdkFinance($app['config']['sdkfinance']);
+        $this->app->bind('sdkfinance', function($app){
+            return new SdkFinance($app['config']->get('sdkfinance'));
         });
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [SdkFinance::class];
-    }
 
     public function boot()
     {
-        // Publish config
-        $configPath = __DIR__ . '/../../config/config.php';
-        $this->publishes([$configPath => config_path('sdkfinance.php')], 'config');
+        $this->publishes(array(__DIR__ . '/../../config/config.php' => config_path('sdkfacade.php')));
     }
 }
