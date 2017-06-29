@@ -1,6 +1,6 @@
 <?php namespace Nmax\SdkFinance;
 
-use Nmax\SdkFinance;
+use Nmax\SdkFinance\SdkFinance;
 use Illuminate\Support\ServiceProvider;
 
 class SdkFinanceServiceProvider extends ServiceProvider {
@@ -19,7 +19,7 @@ class SdkFinanceServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(Connection::class, function ($app) {
+        $this->app->singleton(SdkFinance::class, function ($app) {
             return new SdkFinance($app['config']['sdkfinance']);
         });
     }
