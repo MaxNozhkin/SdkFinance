@@ -1,0 +1,21 @@
+{
+    "name": "nmax/sdk-finance",
+    "description": "Integerates Sdk Finance with Laravel and provides an easy configuration.",
+    "keywords": ["sdkfinance", "payments", "laravel", "laravel5"],
+    "authors": [
+        {
+            "name": "Maksym Nozhkin",
+            "email": "n.maxym@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Nmax\\SdkFinance": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
